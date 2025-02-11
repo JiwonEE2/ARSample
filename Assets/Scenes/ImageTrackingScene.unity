@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d44460841ac1db44ba0c430ee9bd8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageManager: {fileID: 0}
+  imageManager: {fileID: 850039926}
   prefabs:
   - {fileID: 3454506139998076488, guid: 88a0ccc18f2767c4eae24242d2537007, type: 3}
   - {fileID: 7856212233588086507, guid: 91b57b0b44450bc47997d8891aca07dc, type: 3}
