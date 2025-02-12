@@ -6,9 +6,11 @@ public class FaceTracker : MonoBehaviour
 {
 	public ARFaceManager faceManager;
 	public GameObject pointPrefab;
+	public GameObject eyelightPrefab;
 	public TextMeshProUGUI text;
 
 	private Transform[] facePoints = new Transform[468];
+	private GameObject[] eyes = new GameObject[2];
 
 	private void Awake()
 	{
@@ -16,6 +18,11 @@ public class FaceTracker : MonoBehaviour
 		{
 			facePoints[i] = Instantiate(pointPrefab).transform;
 		}
+
+		eyes[0] = Instantiate(eyelightPrefab);
+		eyes[1] = Instantiate(eyelightPrefab);
+		eyes[0].SetActive(false);
+		eyes[1].SetActive(false);
 	}
 
 	private void OnEnable()
@@ -34,10 +41,14 @@ public class FaceTracker : MonoBehaviour
 		if (args.added.Count > 0)
 		{
 			text.text = "얼굴 등장!!";
+			eyes[0].SetActive(true);
+			eyes[1].SetActive(true);
 		}
 		else if (args.removed.Count > 0)
 		{
 			text.text = "얼굴 퇴장..";
+			eyes[0].SetActive(false);
+			eyes[1].SetActive(false);
 		}
 
 		// 얼굴에 움직임이 있을 경우
@@ -53,6 +64,15 @@ public class FaceTracker : MonoBehaviour
 				Vector3 vertPos = face.transform.TransformPoint(face.vertices[i]);
 				facePoints[i].position = vertPos;
 			}
+
+			// 눈 두 개의 위치에 안광 배치(왼쪽: 0, 오른쪽: 1)
+			Vector3 leftEyePos =
+				Vector3.Lerp(facePoints[374].position, facePoints[386].position, 0.5f);
+			Vector3 rightEyePos =
+				Vector3.Lerp(facePoints[145].position, facePoints[159].position, 0.5f);
+
+			eyes[0].transform.position = leftEyePos;
+			eyes[1].transform.position = rightEyePos;
 		}
 	}
 }

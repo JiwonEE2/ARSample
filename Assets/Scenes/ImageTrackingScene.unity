@@ -496,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceManager: {fileID: 850039928}
   pointPrefab: {fileID: 9194180741302023397, guid: b3bf8567d7840764c83aba38d57708cd, type: 3}
+  eyelightPrefab: {fileID: 1882997545436799736, guid: dcc00ca62d3a252429bdf722577767f9, type: 3}
   text: {fileID: 2103291883}
 --- !u!1 &1603503604
 GameObject:
