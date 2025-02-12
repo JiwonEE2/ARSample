@@ -47,8 +47,9 @@ public class FaceTracker : MonoBehaviour
 
 			// 증강 얼굴의 정점들(Vertices)를 차례로 돌며 참조
 			// 총 468개의 정점이 생성됨
-			for (int i = 0; i < face.vertices.Length; i++)
+			for (int i = 0; i < face.vertices.Length /*468*/; i++)
 			{
+				// vertices의 좌표는 face의 중앙에 대한 상대좌표이므로, 얼굴 위치 기준을 월드 좌표로 환산
 				Vector3 vertPos = face.transform.TransformPoint(face.vertices[i]);
 				facePoints[i].position = vertPos;
 			}
