@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.Android;
 
 public class PermissionManager : MonoBehaviour
 {
+	public GPSManager gps;
+
 	private void Start()
 	{
 		// 요청할 권한
@@ -36,11 +37,13 @@ public class PermissionManager : MonoBehaviour
 	private void OnGranted(string msg)
 	{
 		print($"요청 승인됨: {msg}");
+		gps.GPSOn();
 	}
 
 	// 권한 요청이 거부되었을 때 호출될 함수
 	private void OnDenied(string msg)
 	{
 		print($"요청 거부됨: {msg}");
+		gps.GPSOff();
 	}
 }
